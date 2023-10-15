@@ -83,10 +83,10 @@ jobs:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
       - name: Compile
-        run: haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id}}"
-
+        run: haxelib run lime build android -D nolua -D nohxcodec -${{ matrix.arch }} -${{ matrix.build }}
+      
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
-          name: buildAndroid
-          path: export/release/android/bin/app/build/outputs/apk/debug
+          name: build-${{ matrix.arch }}-${{ matrix.build }}
+          path: build-${{ matrix.arch }}-${{ matrix.build }} path: 'export/release/android/bin/app/build/outputs/apk/debug/*.apk'
