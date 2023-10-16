@@ -82,17 +82,17 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
-      - name: Compile
+      - name: Compile --info
         run: |
           haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id }}"
-          echo "Running 'haxelib run lime build android' with stack trace" 
+          echo "Running 'haxelib run lime build android' with stacktrace" 
           haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id }}" --stacktrace
           echo "Running 'haxelib run lime build android' with info"
           haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id}}" --info
           echo "Running 'haxelib run lime build android' with debug" 
           haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id}}" --debug 
 
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
