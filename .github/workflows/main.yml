@@ -50,15 +50,15 @@ jobs:
           haxelib setup ~/haxelib
           haxelib install hxcpp 4.2.1 > /dev/null
           haxelib install lime 7.9.0
-          haxelib install openfl 9.1.0 --quiet
+          haxelib install openfl 9.1.0 
           haxelib --never install flixel 4.11.0
           haxelib run lime setup flixel
           haxelib install flixel-tools
-          haxelib install flixel-ui --quiet
-          haxelib install flixel-addons 2.11.0 --quiet
+          haxelib install flixel-ui 
+          haxelib install flixel-addons 2.11.0 
           haxelib install tjson
           haxelib install hxjsonast
-          haxelib install hscript --quiet
+          haxelib install hscript 
           haxelib git hxCodec https://github.com/SPLCoding/hxCodec-but-it-works-xd.git
           haxelib git linc_luajit https://github.com/Sirox228/linc_luajit
           haxelib git extension-androidtools https://github.com/MaysLastPlay77/extension-androidtools
@@ -82,17 +82,8 @@ jobs:
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
-      - name: Compile --info
-        run: |
-          haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id }}"
-          echo "Running 'haxelib run lime build android' with stacktrace" 
-          haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id }}" --stacktrace
-          echo "Running 'haxelib run lime build android' with info"
-          haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id}}" --info
-          echo "Running 'haxelib run lime build android' with debug" 
-          haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id}}" --debug 
-
-        continue-on-error: false
+      - name: Compile
+        run: haxelib run lime build android -D NO_PRECOMPILED_HEADERS --app-version="4.0.0-${{ github.run_id}}"
 
       - name: Publish Artifact
         uses: actions/upload-artifact@main
