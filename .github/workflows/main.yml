@@ -29,7 +29,7 @@ jobs:
         uses: nttld/setup-ndk@main
         id: setup-ndk
         with:
-          ndk-version: r21e
+          ndk-version: r15c
 
       - name: Setup Java JDK
         uses: actions/setup-java@main
@@ -41,7 +41,7 @@ jobs:
         uses: android-actions/setup-android@main
 
       - name: Setup Haxe
-        uses: krdlab/setup-haxe@v1.2.0
+        uses: krdlab/setup-haxe@master
         with:
           haxe-version: 4.2.5
 
