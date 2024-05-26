@@ -84,7 +84,7 @@ class FreeplayState extends MusicBeatState
 				var colors:Array<Int> = song[2];
 				if(colors == null || colors.length < 3)
 				{
-					colors = [146, 113, 253];
+					colors = [255, 255, 255];
 				}
 				addSong(song[0], i, song[1], FlxColor.fromRGB(colors[0], colors[1], colors[2]));
 			}
@@ -102,7 +102,7 @@ class FreeplayState extends MusicBeatState
 			}
 		}*/
 
-		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
+		bg = new FlxSprite().loadGraphic(Paths.image('menuFreeplay'));
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 		bg.screenCenter();
