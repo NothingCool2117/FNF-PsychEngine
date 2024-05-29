@@ -111,8 +111,7 @@ class FreeplayState extends MusicBeatState
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(bg);
 		bg.screenCenter();
-
-		dj = new FlxSprite().loadGraphic(Paths.image('limo/bgLimo'));
+		
 		dj = new BGSprite('limo/bgLimo', -150, 480, 0.4, 0.4, ['background limo pink'], false);
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
 		add(dj);
