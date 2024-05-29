@@ -21,6 +21,9 @@ import WeekData;
 #if MODS_ALLOWED
 import sys.FileSystem;
 #end
+import flixel.animation.FlxBaseAnimation;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.frames.FlxFrame;
 
 using StringTools;
 
@@ -49,6 +52,8 @@ class FreeplayState extends MusicBeatState
 	var bg:FlxSprite;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
+	
+	var dj:FlxSprite;
 
 	override function create()
 	{
@@ -107,6 +112,11 @@ class FreeplayState extends MusicBeatState
 		add(bg);
 		bg.screenCenter();
 
+		dj = new FlxSprite().loadGraphic(Paths.image('limo/bgLimo'));
+		dj = new BGSprite('limo/bgLimo', -150, 480, 0.4, 0.4, ['background limo pink'], false);
+		bg.antialiasing = ClientPrefs.globalAntialiasing;
+		add(dj);
+		
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
@@ -221,6 +231,7 @@ class FreeplayState extends MusicBeatState
 	{
 		songs.push(new SongMetadata(songName, weekNum, songCharacter, color));
 	}
+	
 
 	function weekIsLocked(name:String):Bool {
 		var leWeek:WeekData = WeekData.weeksLoaded.get(name);
