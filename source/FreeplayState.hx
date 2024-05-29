@@ -53,7 +53,6 @@ class FreeplayState extends MusicBeatState
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 	
-	var dj:FlxSprite;
 	var dj:BGSprite;
 
 	override function create()
