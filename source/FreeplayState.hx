@@ -52,8 +52,6 @@ class FreeplayState extends MusicBeatState
 	var bg:FlxSprite;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
-	
-	var dj:BGSprite;
 
 	override function create()
 	{
@@ -112,10 +110,6 @@ class FreeplayState extends MusicBeatState
 		add(bg);
 		bg.screenCenter();
 		
-		dj = new BGSprite('limo/bgLimo', -150, 480, 0.4, 0.4, ['background limo pink'], false);
-		bg.antialiasing = ClientPrefs.globalAntialiasing;
-		add(dj);
-		
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
@@ -123,6 +117,8 @@ class FreeplayState extends MusicBeatState
 		{
 			var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
 			songText.isMenuItem = true;
+			songText.screenCenter(X); 			
+			songText.changeX = false;
 			songText.targetY = i - curSelected;
 			grpSongs.add(songText);
 
