@@ -52,6 +52,7 @@ class FreeplayState extends MusicBeatState
 	var bg:FlxSprite;
 	var intendedColor:Int;
 	var colorTween:FlxTween;
+	
 
 	override function create()
 	{
@@ -110,6 +111,11 @@ class FreeplayState extends MusicBeatState
 		add(bg);
 		bg.screenCenter();
 		
+		limoDancer.loadGraphic("limo/limoDancer.png", true);
+		limoDancer.frames = FlxAtlasFrames.fromSparrow("limo/limoDancer.png", "limo/limoDancer.xml");
+		limoDancer.animation.addByPrefix("bg dancer sketch PINK", "idle", 24); 
+		limoDancer.animation.play("bg dancer sketch PINK");
+		
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
@@ -117,8 +123,7 @@ class FreeplayState extends MusicBeatState
 		{
 			var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
 			songText.isMenuItem = true;
-			songText.screenCenter(X); 			
-			songText.changeX = false;
+			songText.screenCenter();
 			songText.targetY = i - curSelected;
 			grpSongs.add(songText);
 
