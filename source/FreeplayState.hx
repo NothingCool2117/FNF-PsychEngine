@@ -112,7 +112,7 @@ class FreeplayState extends MusicBeatState
 		add(bg);
 		bg.screenCenter();
 		
-		limoDancer.loadGraphic("limo/limoDancer.png", true);
+		limoDancer = new FlxSprite().loadGraphic(Paths.image("limo/limoDancer.png", true));
 		limoDancer.frames = FlxAtlasFrames.fromSparrow("limo/limoDancer.png", "limo/limoDancer.xml");
 		limoDancer.animation.addByPrefix("bg dancer sketch PINK", "idle", 24); 
 		limoDancer.animation.play("bg dancer sketch PINK");
