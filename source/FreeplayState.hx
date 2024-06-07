@@ -53,8 +53,6 @@ class FreeplayState extends MusicBeatState
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 	
-	var limoDancer:FlxSprite;
-
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -112,11 +110,21 @@ class FreeplayState extends MusicBeatState
 		add(bg);
 		bg.screenCenter();
 		
-		limoDancer = new FlxSprite().loadGraphic(Paths.image("limo/limoDancer.png"));
-		limoDancer.frames = FlxAtlasFrames.fromSparrow("limo/limoDancer.png", "limo/limoDancer.xml");
-		limoDancer.animation.addByPrefix("bg dancer sketch PINK", "idle", 24); 
-		limoDancer.animation.play("bg dancer sketch PINK");
 		
+		//this is what i like to call "errorin time"
+		var gfDance:FlxSprite; 
+		var danceLeft:Bool = false;
+		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
+		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
+		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, true);
+		add(gfDance);
+		gfDance.setGraphicSize(750, 700);
+		if (gfDance != null) {
+		    danceLeft = !danceLeft;
+		    if (danceLeft) gfDance.animation.play('danceLeft');
+		    }
+
+
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
