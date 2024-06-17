@@ -53,6 +53,8 @@ class FreeplayState extends MusicBeatState
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 	
+	var disc:FlxSprite;
+	
 	override function create()
 	{
 		Paths.clearStoredMemory();
@@ -126,9 +128,6 @@ class FreeplayState extends MusicBeatState
 		    } 
 */
 		    
-		var disc:FlxSprite;
-		 
-	     
 	    disc = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07).loadGraphic(Paths.image('disc'));
 	    disc.antialiasing = ClientPrefs.globalAntialiasing;
 	    add(disc);
