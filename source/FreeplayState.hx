@@ -126,23 +126,12 @@ class FreeplayState extends MusicBeatState
 		    } 
 */
 		    
-		 var disc:FlxSprite;
+		var disc:FlxSprite;
 		 
-		 override function create()
-		 {
-		     super.create();
-		     
-		     disc = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
-		     disc.antialiasing = ClientPrefs.globalAntialiasing;
-		     add(disc);
-		 }
-		 
-		 override function update(elapsed:Float)
-		 {
-		     disc.angle++;
-		     
-		     super.update(elapsed);
-		 }
+	     
+	    disc = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07).loadGraphic(Paths.image('disc'));
+	    disc.antialiasing = ClientPrefs.globalAntialiasing;
+	    add(disc);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -287,6 +276,8 @@ class FreeplayState extends MusicBeatState
 	var holdTime:Float = 0;
 	override function update(elapsed:Float)
 	{
+	    disc.angle++;
+	 
 		if (FlxG.sound.music.volume < 0.7)
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
