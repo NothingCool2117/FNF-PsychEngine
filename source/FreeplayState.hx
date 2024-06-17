@@ -110,10 +110,11 @@ class FreeplayState extends MusicBeatState
 		add(bg);
 		bg.screenCenter();
 		
-		
 		//this is what i like to call "errorin time"
-		var gfDance:FlxSprite; 
+		
+/*		var gfDance:FlxSprite; 
 		var danceLeft:Bool = false;
+		
 		gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
 		gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
 		gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, true);
@@ -122,8 +123,26 @@ class FreeplayState extends MusicBeatState
 		if (gfDance != null) {
 		    danceLeft = !danceLeft;
 		    if (danceLeft) gfDance.animation.play('danceLeft');
-		    }
-
+		    } 
+*/
+		    
+		 var disc:FlxSprite;
+		 
+		 override function create()
+		 {
+		     super.create();
+		     
+		     disc = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
+		     disc.antialiasing = ClientPrefs.globalAntialiasing;
+		     add(disc);
+		 }
+		 
+		 override function update(elapsed:Float)
+		 {
+		     disc.angle++;
+		     
+		     super.update(elapsed);
+		 }
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
