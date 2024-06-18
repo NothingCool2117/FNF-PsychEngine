@@ -128,7 +128,7 @@ class FreeplayState extends MusicBeatState
 		    } 
 */
 		    
-	    disc = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07).loadGraphic(Paths.image('disc'));
+	    disc = new FlxSprite(FlxG.width * 0.8, FlxG.height * 0.17).loadGraphic(Paths.image('disc'));
 	    disc.antialiasing = ClientPrefs.globalAntialiasing;
 	    add(disc);
 
