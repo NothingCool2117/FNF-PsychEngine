@@ -53,6 +53,7 @@ class FreeplayState extends MusicBeatState
 	var intendedColor:Int;
 	var colorTween:FlxTween;
 	
+	var skidi:FlxSprite;
 	var disc:FlxSprite;
 	
 	override function create()
@@ -128,22 +129,30 @@ class FreeplayState extends MusicBeatState
 		    } 
 */
 		    
-	    disc = new FlxSprite(FlxG.width * 0.8, FlxG.height * 0.17).loadGraphic(Paths.image('disc'));
+	    disc = new FlxSprite(FlxG.width * 0.8, FlxG.height * 0.47).loadGraphic(Paths.image('disc'));
 	    disc.antialiasing = ClientPrefs.globalAntialiasing;
 	    add(disc);
+	    
+	    skidi = new FlxSprite().loadGraphic(Paths.image('menuSuing'));
+		skidi.antialiasing = ClientPrefs.globalAntialiasing;
+		add(skidi);
+		skidi.screenCenter();
+	/*	skidi.x -= 1200;
+		FlxTween.tween(skidi, {x:0}, 2.4, {ease: FlxEase.expoOut});
+*/
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
 
 		for (i in 0...songs.length)
 		{
-			var songText:Alphabet = new Alphabet(90, 320, songs[i].songName, true);
+			var songText:Alphabet = new Alphabet(45, 160, songs[i].songName, true);
 			songText.isMenuItem = true;
 			songText.screenCenter();
 			songText.targetY = i - curSelected;
 			grpSongs.add(songText);
 
-			var maxWidth = 980;
+			var maxWidth = 490;
 			if (songText.width > maxWidth)
 			{
 				songText.scaleX = maxWidth / songText.width;
