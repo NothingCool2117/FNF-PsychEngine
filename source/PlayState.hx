@@ -61,6 +61,7 @@ import FunkinLua;
 import DialogueBoxPsych;
 import Conductor.Rating;
 import flixel.system.FlxAssets.FlxShader;
+import StickerTransition;
 
 #if !flash 
 import flixel.addons.display.FlxRuntimeShader;
@@ -1378,6 +1379,11 @@ class PlayState extends MusicBeatState
 		callOnLuas('onCreatePost', []);
 
 		super.create();
+		
+	//the shit
+		StickerTransition.loadStickers();
+		StickerTransition.popUpStickers(startGame);
+	//the shit
 
 		cacheCountdown();
 		cachePopUpScore();
@@ -1399,6 +1405,23 @@ class PlayState extends MusicBeatState
 		CustomFadeTransition.nextCamera = camOther;
 		if(eventNotes.length < 1) checkEventNote();
 	}
+	
+	
+//from here to
+	public function startGame();
+	{
+	    //startGame
+	}
+	
+	public function endLevel();
+	{
+	    StickerTransition.popDownStickers(endLevelCallback);
+	}
+	
+	function endLevelCallback(); {
+        // Code to transition to the next level or menu
+    }
+//another here
 
 	#if (!flash && sys)
 	public var runtimeShaders:Map<String, Array<String>> = new Map<String, Array<String>>();
